@@ -1,0 +1,17 @@
+<div class="heroe-detail-container">
+    <h2 class="title">Detalle del evento</h2>
+    <hr>
+    <div class="card">
+        <div class="image-container">
+            <img src="../../../assets/img/auditorio.jpg" class="  img">
+        </div>
+        <div>
+            <div class="card-body">
+                <h3 class="card-title"><strong>{{eventData.title}}</strong></h3>
+                <p class="card-text"><strong>Descripcion: </strong>{{eventData.description}}</p>
+                <p class="card-text"><strong>Ubicación: </strong>{{eventData.eventSite.city.department}} - {{eventData.eventSite.city.name}} - {{eventData.eventSite.name}}</p>
+                <p class="card-text"><strong>Dirección: </strong>{{eventData.eventSite.address}}</p>
+                <p class="card-text"><strong>Fecha: </strong>{{eventData.date}}</p>
+            </div>
+        </div>
+    </div>

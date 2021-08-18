@@ -1,0 +1,16 @@
+<div class="animated fadeIn fast heroes-container">
+    <h1 class="title">Lista de eventos</h1>
+    <div class="row row-cols-1 row-cols-md-3">
+        <div class="col mb-4 animated fadeIn fast" *ngFor="let event of events">
+          <div class="card">
+            <img src="../../../assets/img/auditorio.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{event.title}}</h5>
+                <p class="card-text">{{event.description}}</p>
+                <p class="card-text"><strong>Ciudad: </strong>{{event.eventSite.city.name}}</p>
+            </div>
+            <button type="button" class="btn btn-outline-primary" (click)="goToEventDetail(event.title)"> Ver más</button>
+        </div>
+        </div>
+    </div>
+</div>
