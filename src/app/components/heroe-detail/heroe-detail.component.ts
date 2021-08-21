@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AddCommentRequest, HeroesService } from '../../services/heroes.service';
+import { AddCommentRequest, HeroesService, NewParticipantRequest } from '../../services/heroes.service';
 import { ActivatedRoute } from '@angular/router';
-import { Event, Comment } from '../../interfaces/event'
+import { Event, Comment, Participant} from '../../interfaces/event'
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -44,6 +44,21 @@ export class HeroeDetailComponent {
       })
       this.commentText.reset();
     }
+  }
+
+  participar(){
+    const participant: Participant = {
+      fullName: "Monica Rojas",
+      userName: "monirojas"
+    }
+    const request: NewParticipantRequest = {
+      eventId: this.eventData.id,
+      participant: participant
+    }
+    this.eventData.participants.push(participant);
+    this.heroesService.sendNewParticipant(request).subscribe((response: any) => {
+      console.log(response);
+    });
   }
 
   goToHeroesList(): void {

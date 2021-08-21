@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { Event, Comment } from '../interfaces/event'
+import { Event, Comment, Participant } from '../interfaces/event'
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -26,8 +26,11 @@ export class HeroesService {
   }
 
   sendNewComment(newComment: AddCommentRequest): Observable<any> {
-    console.log('entra en el servicio');
     return this.http.post('http://localhost:8000/addCommentToEvent', newComment);
+  }
+
+  sendNewParticipant(newParticipant: NewParticipantRequest): Observable<any> {
+    return this.http.post('http://localhost:8000/addParticipantToEvent', newParticipant);
   }
 
   getEvent = (title: string): Event[] => this.eventList.filter((event: Event) => event.title === title);
@@ -42,4 +45,9 @@ export interface NewCommentResponse {
 export interface AddCommentRequest {
   eventId: String;
   comment: Comment;
+}
+
+export interface NewParticipantRequest{
+  eventId: String;
+  participant: Participant;
 }

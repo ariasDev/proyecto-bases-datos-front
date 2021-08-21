@@ -26,3 +26,8 @@ export interface Comment{
   userName: string;
   comment: string;
 }
+
+export interface Participant{
+  userName: string;
+  fullName: string;
+}
