@@ -22,7 +22,7 @@ interface City {
   country: string;
 }
 
-interface Comment{
+export interface Comment{
   userName: string;
   comment: string;
 }

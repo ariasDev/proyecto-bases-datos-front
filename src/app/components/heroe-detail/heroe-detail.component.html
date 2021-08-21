@@ -1,17 +1,36 @@
 <div class="heroe-detail-container">
-    <h2 class="title">Detalle del evento</h2>
-    <hr>
-    <div class="card">
-        <div class="image-container">
-            <img src="../../../assets/img/auditorio.jpg" class="  img">
-        </div>
-        <div>
-            <div class="card-body">
-                <h3 class="card-title"><strong>{{eventData.title}}</strong></h3>
-                <p class="card-text"><strong>Descripcion: </strong>{{eventData.description}}</p>
-                <p class="card-text"><strong>Ubicación: </strong>{{eventData.eventSite.city.department}} - {{eventData.eventSite.city.name}} - {{eventData.eventSite.name}}</p>
-                <p class="card-text"><strong>Dirección: </strong>{{eventData.eventSite.address}}</p>
-                <p class="card-text"><strong>Fecha: </strong>{{eventData.date}}</p>
-            </div>
-        </div>
+  <h2 class="title">Detalle del evento</h2>
+  <hr>
+  <div class="card">
+    <div class="image-container">
+      <img src="../../../assets/img/auditorio.jpg" class="  img">
     </div>
+    <div>
+      <div class="card-body">
+        <h3 class="card-title"><strong>{{eventData.title}}</strong></h3>
+        <p class="card-text"><strong>Descripcion: </strong>{{eventData.description}}</p>
+        <p class="card-text"><strong>Ubicación: </strong>{{eventData.eventSite.city.department}} -
+          {{eventData.eventSite.city.name}} - {{eventData.eventSite.name}}</p>
+        <p class="card-text"><strong>Dirección: </strong>{{eventData.eventSite.address}}</p>
+        <p class="card-text"><strong>Fecha: </strong>{{eventData.date}}</p>
+        <p class="card-text"><strong>Categoria: </strong>{{eventData.category}}</p>
+        <hr>
+        <div class="more">
+          <div class="comments" *ngIf="eventData.comments.length > 0">
+            <h4><strong>Comentarios</strong></h4>
+            <div class="area-comment" *ngFor="let comment of eventData.comments">
+              <p><strong>{{comment.userName}}</strong></p>
+              <p>{{comment.comment}}</p>
+            </div>
+            <div class="new-comment">
+              <input type="text" class="comment-input" [formControl]="commentText">
+              <button class="comment-button" (click)="commen()">comentar</button>
+            </div>
+          </div>
+          <div>
+            <h4><strong class="participants">Participantes</strong></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

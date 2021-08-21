@@ -1,7 +1,8 @@
 import { Injectable, OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { Event } from '../interfaces/event'
+import { Event, Comment } from '../interfaces/event'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,21 @@ export class HeroesService {
     }
   }
 
+  sendNewComment(newComment: AddCommentRequest): Observable<any> {
+    console.log('entra en el servicio');
+    return this.http.post('http://localhost:8000/addCommentToEvent', newComment);
+  }
+
   getEvent = (title: string): Event[] => this.eventList.filter((event: Event) => event.title === title);
 
+}
+
+
+export interface NewCommentResponse {
+  n: Number;
+}
+
+export interface AddCommentRequest {
+  eventId: String;
+  comment: Comment;
 }
