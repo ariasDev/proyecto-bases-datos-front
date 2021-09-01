@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Event } from '../../interfaces/event';
 import { HeroesService } from '../../services/heroes.service';
-import { Heroe } from '../../interfaces/heroe';
-import {Event} from '../../interfaces/event'
 
 @Component({
   selector: 'app-heroes',
@@ -12,9 +12,23 @@ import {Event} from '../../interfaces/event'
 export class HeroesComponent implements OnInit {
 
   events: Event[];
+  formGroup = new FormGroup({
+    category: new FormControl('', [Validators.required])
+  });
+  categoryList = ['ingenieria', 'comunicacion', 'deportes', 'todos'];
+  categorySelected: string;
+
 
   constructor(private heroesService: HeroesService, private router: Router) {
+    this.categorySelected = 'todos';
     this.events = this.heroesService.getEventsList();
+    this.listenChangeCategory();
+  }
+
+  listenChangeCategory() {
+    this.formGroup.get('category').valueChanges.subscribe((categorySelected: string) => {
+      this.categorySelected = categorySelected;
+    })
   }
 
   ngOnInit(): void {
