@@ -15,7 +15,7 @@ export class HeroesComponent implements OnInit {
   formGroup = new FormGroup({
     category: new FormControl('', [Validators.required])
   });
-  categoryList = ['ingenieria', 'comunicacion', 'deportes', 'todos'];
+  categoryList = ['ingenieria', 'comunicacion', 'deportes', 'todos', 'administracion', 'ciencias basicas'];
   categorySelected: string;
 
 
